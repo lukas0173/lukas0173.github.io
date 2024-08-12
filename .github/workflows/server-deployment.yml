@@ -42,7 +42,7 @@ jobs:
       - name: Create private key file
         run: |
           mkdir key
-          echo ${{secrets.AWS_SSH_KEY}} > key/private.pem
+          echo "${{secrets.AWS_SSH_KEY}}" > key/private.pem
           chmod 600 private.pem
 
       - name: Start the deployment process
