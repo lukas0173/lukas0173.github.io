@@ -6,9 +6,6 @@ on:
 jobs:
   Containerize:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./server
     environment: "AWS Deployment"
     steps:
       - name: Checkout
@@ -32,3 +29,17 @@ jobs:
           context: ./server
           push: true
           tags: ${{vars.DOCKERHUB_USERNAME}}/portfolio-server:latest
+
+  Deployment:
+    runs-on: ubuntu-latest
+    environment: "AWS Deployment"
+    steps:
+      - name: Create private key file
+        run: |
+          echo ${{secrets.AWS_SSH_KEY}} > private.pem
+          chmod 600 private.pem
+
+      - name: Start the deployment process
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private.pem ${{secrets.AWS_SSH_USERNAME}}@${{secrets.AWS_SSH_IP}}
+          ./docker_run.sh
