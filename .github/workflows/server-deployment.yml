@@ -1,4 +1,4 @@
-name: server-deployment.yml
+name: Deploy the server to AWS EC2 instance
 on:
   push:
     branches: [ main ]
@@ -9,7 +9,7 @@ jobs:
     environment: "AWS Deployment"
     defaults:
       run:
-        working-directory: ./server
+        working-directory: server
 
     steps:
       - name: Create the .env file
