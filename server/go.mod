@@ -1,4 +1,4 @@
-module portfolio-server
+module server
 
 go 1.22.5
 

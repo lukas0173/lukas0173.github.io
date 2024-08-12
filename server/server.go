@@ -8,8 +8,8 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"os"
-	"portfolio-server/database"
-	"portfolio-server/handlers"
+	"server/database"
+	"server/handlers"
 )
 
 func databaseMiddleware(database *pgx.Conn) echo.MiddlewareFunc {
