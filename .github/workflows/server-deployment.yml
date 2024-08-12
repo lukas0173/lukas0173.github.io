@@ -39,12 +39,15 @@ jobs:
     runs-on: ubuntu-latest
     environment: "AWS Deployment"
     steps:
-      - name: Create private key file
-        run: |
-          echo "${{secrets.AWS_SSH_KEY}}" > private.pem
-          chmod 600 private.pem
-
       - name: Start the deployment process
-        run: |
-          ssh -o StrictHostKeyChecking=no -i private.pem ${{secrets.AWS_SSH_USERNAME}}@${{secrets.AWS_SSH_IP}}  '
-            ./docker_run.sh
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{secrets.AWS_HOST_IP}}
+          username: ${{secrets.AWS_SSH_USERNAME}}
+          key: ${{secrets.AWS_SSH_KEY}}
+          script: |
+            docker pull ${{secrets.CONTAINER_NAME}}
+            docker stop main-server
+            docker rm main-server
+            docker run -d -p 80:1323 --add-host host.docker.internal:host-gateway --name main-server kartorias1/portfolio-server:latest
+
