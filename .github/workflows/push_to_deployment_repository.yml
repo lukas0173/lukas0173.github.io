@@ -1,9 +1,10 @@
 name: Update the deployment repository
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [ "Deploy the server to AWS EC2 instance" ]
+    types:
+      - completed
 
 permissions:
   contents: write
