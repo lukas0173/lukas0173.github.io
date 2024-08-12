@@ -12,7 +12,7 @@ func ConnectDB() *pgx.Conn {
 	databaseURL, ok := os.LookupEnv("DATABASE_URL")
 	database, err := pgx.Connect(context.Background(), databaseURL)
 	if err != nil || !ok {
-		log.Fatal().Err(err).Msg("[Database] Unable to connect: %v\n")
+		log.Fatal().Err(err).Msg("[Database] Unable to connect: \n")
 		os.Exit(1)
 	}
 	fmt.Println("[Database] Successfully connected.")
