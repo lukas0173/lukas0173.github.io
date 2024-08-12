@@ -7,6 +7,9 @@ jobs:
   Containerize:
     runs-on: ubuntu-latest
     environment: "AWS Deployment"
+    defaults:
+      run:
+        working-directory: ./server
     steps:
       - name: Checkout
         uses: actions/checkout@v4
