@@ -1,0 +1,30 @@
+name: server-deployment.yml
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  Containerize:
+    runs-on: ubuntu-latest
+    environment: "AWS Deployment"
+    defaults:
+      run:
+        working-directory: ./server
+
+    steps:
+      - name: Create the .env file
+        run: echo ${{secrets.DATABASE_URL}} > .env_docker
+      - name: Login to Docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{vars.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{vars.DOCKERHUB_USERNAME}}/portfolio-server:latest
