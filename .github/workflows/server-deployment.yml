@@ -6,8 +6,10 @@ on:
 jobs:
   Containerize:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
     environment: "AWS Deployment"
-
     steps:
       - name: List dir
         run: ls
