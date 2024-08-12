@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "client-dev": "npm --prefix client run dev",
+    "server-dev": "cd server && zig build run"
+  }
+}

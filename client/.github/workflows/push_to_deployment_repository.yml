@@ -1,0 +1,36 @@
+name: Update the deployment repository
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  repository-projects: write
+
+jobs:
+  Update-the-repository:
+    runs-on: ubuntu-latest
+    environment: ACCESS_TOKEN
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.ACCESS_TOKEN}}
+
+      - name: Git configuration
+        run: |
+          git config --local user.email vuwin24680@gmail.com
+          git config --local user.name cielaton
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN}}
+          repository: cielaton/cielaton.github.io
+          force: true

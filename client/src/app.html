@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link href="%sveltekit.assets%/pacman-favicon.svg" rel="icon"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    %sveltekit.head%
+    <!--Poppins font-->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+    />
+    <!--Ion icons-->
+    <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+            rel="stylesheet"
+    />
+    <title>Welcome!</title>
+</head>
+
+<body
+        class="bg-Crust text-white relative"
+        data-sveltekit-preload-data="hover"
+>
+<div style="display: contents">%sveltekit.body%</div>
+<div class="absolute h-screen inset-0 w-full opacity-70 z-[-1]">
+    <div class="absolute inset-0" id="particles-js"></div>
+</div>
+<script src="particles_js/particles.js"></script>
+<script>
+    particlesJS.load("particles-js", "particles_js/particles.json", () => {
+        console.log("[Dependencies]: Particles.js config loaded");
+    });
+</script>
+</body>
+</html>
