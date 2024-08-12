@@ -12,6 +12,8 @@ jobs:
         working-directory: server
 
     steps:
+      - name: List dir
+        run: ls
       - name: Create the .env file
         run: echo ${{secrets.DATABASE_URL}} > .env_docker
       - name: Login to Docker hub
