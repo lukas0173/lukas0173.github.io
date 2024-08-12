@@ -18,6 +18,8 @@ jobs:
         run: |
           touch .env
           echo API_URL=${{secrets.API_URL}} > .env
+      - name: Navigate to client directory
+        run: cd client
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -44,7 +46,6 @@ jobs:
     permissions:
       pages: write
       id-token: write
-
 
     steps:
       - name: Deploy

@@ -24,4 +24,3 @@ go.work
 # environment variables
 .env
 .env_docker
-.env_docker
