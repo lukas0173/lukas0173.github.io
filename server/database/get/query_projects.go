@@ -1,4 +1,4 @@
-package query
+package get
 
 import (
 	"context"
@@ -14,10 +14,10 @@ func ProjectsQuery(database *pgx.Conn, projectType string) []models.Project {
 		log.Err(err).Msg("[Database] Error querying personal projects: %v\n")
 	}
 
-	// Iterate through the query results and assign it into returned value
+	// Iterate through the get results and assign it into returned value
 	var returnedProjects []models.Project
 	for query.Next() {
-		// Holding query values for each field
+		// Holding get values for each field
 		var (
 			id                 int
 			projectName        string
@@ -36,7 +36,7 @@ func ProjectsQuery(database *pgx.Conn, projectType string) []models.Project {
 			Id: id, ProjectName: projectName, ProjectDescription: projectDescription, Link: link, Technologies: technologies, ImageName: imageName,
 		})
 	}
-	// Close query result on function return
+	// Close get result on function return
 	defer query.Close()
 
 	return returnedProjects

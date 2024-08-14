@@ -14,5 +14,9 @@ func ProjectsInsert(database *pgx.Conn, project models.Project, projectType stri
 	queryCommand := "INSERT INTO " + projectType + " (project_name, project_description, image_name, link, technologies) VALUES ('" + inputData + "'," + "ARRAY['" + strings.Join(project.Technologies, "','") + "'])"
 
 	_, err := database.Exec(context.Background(), queryCommand)
-	return err
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
