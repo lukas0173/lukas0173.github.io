@@ -52,6 +52,8 @@ func main() {
 	echoServer.GET("/personal-projects", handlers.GetPersonalProjects)
 	echoServer.GET("/team-projects", handlers.GetTeamProjects)
 
+	echoServer.POST("/personal-projects", handlers.InsertPersonalProjects)
+
 	echoServer.Logger.Fatal(echoServer.Start(":1323"))
 	defer func() {
 		database.DisconnectDB(postgreSQL)
