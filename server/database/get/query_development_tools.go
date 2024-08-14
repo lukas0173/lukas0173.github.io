@@ -1,4 +1,4 @@
-package query
+package get
 
 import (
 	"context"
@@ -14,10 +14,10 @@ func DevelopmentToolsQuery(database *pgx.Conn) []models.DevelopmentTools {
 		log.Err(err).Msg("[Database] Error querying development tools: %v\n")
 	}
 
-	// Iterate through the query results and assign it into returned value
+	// Iterate through the get results and assign it into returned value
 	var returnedLiteral []models.DevelopmentTools
 	for query.Next() {
-		// Holding query values for each field
+		// Holding get values for each field
 		var field, description, textColor, path string
 		var iconNames []string
 		var id, span int
@@ -37,7 +37,7 @@ func DevelopmentToolsQuery(database *pgx.Conn) []models.DevelopmentTools {
 		})
 	}
 
-	// Close query result on function return
+	// Close get result on function return
 	defer query.Close()
 
 	return returnedLiteral
