@@ -54,6 +54,8 @@ func main() {
 
 	echoServer.POST("/personal-projects", handlers.InsertPersonalProjects)
 
+	echoServer.DELETE("/personal-projects/:id", handlers.DeletePersonalProjects)
+
 	echoServer.Logger.Fatal(echoServer.Start(":1323"))
 	defer func() {
 		database.DisconnectDB(postgreSQL)
