@@ -8,8 +8,8 @@ import (
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"os"
-	"portfolio-server/database"
-	"portfolio-server/handlers"
+	"server/database"
+	"server/handlers"
 )
 
 func databaseMiddleware(database *pgx.Conn) echo.MiddlewareFunc {
@@ -51,6 +51,8 @@ func main() {
 	echoServer.GET("/development-tools", handlers.GetDevelopmentTools)
 	echoServer.GET("/personal-projects", handlers.GetPersonalProjects)
 	echoServer.GET("/team-projects", handlers.GetTeamProjects)
+
+	echoServer.POST("/personal-projects", handlers.InsertPersonalProjects)
 
 	echoServer.Logger.Fatal(echoServer.Start(":1323"))
 	defer func() {
