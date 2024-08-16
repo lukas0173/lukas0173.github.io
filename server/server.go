@@ -9,7 +9,9 @@ import (
 	"github.com/rs/zerolog/log"
 	"os"
 	"server/database"
+	"server/database/insert"
 	"server/handlers"
+	"server/models"
 )
 
 func databaseMiddleware(database *pgx.Conn) echo.MiddlewareFunc {
@@ -55,6 +57,15 @@ func main() {
 	echoServer.POST("/personal-projects", handlers.InsertPersonalProjects)
 
 	echoServer.DELETE("/personal-projects/:id", handlers.DeletePersonalProjects)
+
+	_ = insert.DevelopmentToolsInsert(postgreSQL, models.DevelopmentTools{
+		Id:          0,
+		Field:       "",
+		Description: "",
+		Style:       models.Style{},
+		Icons:       models.Icons{},
+		Order:       0,
+	})
 
 	echoServer.Logger.Fatal(echoServer.Start(":1323"))
 	defer func() {

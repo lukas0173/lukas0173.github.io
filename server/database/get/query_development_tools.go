@@ -9,7 +9,7 @@ import (
 
 func DevelopmentToolsQuery(database *pgx.Conn) []models.DevelopmentTools {
 	// Query command
-	query, err := database.Query(context.Background(), "SELECT tools.id, tools.field, tools.descriptions, tools.text_color, tools.span, icons.path, icons.icon_names FROM favourite_tools as tools INNER JOIN favourite_tools_icons as icons on tools.field = icons.field ORDER BY tools.id")
+	query, err := database.Query(context.Background(), "SELECT tools.id, tools.field, tools.descriptions, tools.text_color, tools.span, tools.order, icons.path, icons.icon_names FROM favourite_tools as tools INNER JOIN favourite_tools_icons as icons on tools.field = icons.field ORDER BY tools.id")
 	if err != nil {
 		log.Err(err).Msg("[Database] Error querying development tools: %v\n")
 	}
@@ -20,9 +20,9 @@ func DevelopmentToolsQuery(database *pgx.Conn) []models.DevelopmentTools {
 		// Holding get values for each field
 		var field, description, textColor, path string
 		var iconNames []string
-		var id, span int
+		var id, span, order int
 
-		err := query.Scan(&id, &field, &description, &textColor, &span, &path, &iconNames)
+		err := query.Scan(&id, &field, &description, &textColor, &span, &order, &path, &iconNames)
 		if err != nil {
 			log.Err(err).Msg("[Database] Scan error: %v\n")
 			return nil
@@ -34,6 +34,7 @@ func DevelopmentToolsQuery(database *pgx.Conn) []models.DevelopmentTools {
 			Description: description,
 			Style:       models.Style{Span: span, TextColor: textColor},
 			Icons:       models.Icons{Path: path, Name: iconNames},
+			Order:       order,
 		})
 	}
 
