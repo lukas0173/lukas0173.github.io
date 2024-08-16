@@ -5,7 +5,7 @@
 </script>
 
 <Tab.Head
-        class="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/6 flex items-center mx-auto px-2 py-2 bg-Surface0 rounded-lg">
+        class="relative w-full sm:w-5/6 md:w-4/6 lg:w-3/6 xl:w-2/6 flex items-center mx-auto px-2 py-2 bg-Surface0 rounded-lg">
     <div class="absolute transition-all duration-200 my-auto mx-2 top-0 left-0 bottom-0 rounded-lg bg-Mantle"
          id="indicator"/>
     {#each projects as projectType, index}

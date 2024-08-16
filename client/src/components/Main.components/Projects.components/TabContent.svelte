@@ -29,7 +29,7 @@
                             </h3>
                         </a>
                         <p class="text-sm lg:text-base">{project.projectDescription}</p>
-                        <div class="mt-2 flex gap-3">
+                        <div class="mt-2 flex flex-wrap gap-3">
                             {#each project.technologies as technology, technologyIndex}
                                 <!--accessTechnologyColors with the root index (projects index), then the project inside the projectList property, and finally, the color property-->
                                 <p class={"rounded-lg text-sm text-Base px-2 py-[2px] " + technologyColors[projectTypeIndex].projectList[projectIndex].colors[technologyIndex]}>{technology}</p>
