@@ -8,7 +8,7 @@ import (
 
 func DevelopmentToolsGet(database *pgx.Conn) ([]models.DevelopmentTools, error) {
 	// Query command
-	query, err := database.Query(context.Background(), "SELECT tools.id, tools.field, tools.descriptions, tools.text_color, tools.span, tools.order, icons.path, icons.icon_names FROM favourite_tools as tools INNER JOIN favourite_tools_icons as icons on tools.field = icons.field ORDER BY tools.id")
+	query, err := database.Query(context.Background(), "SELECT tools.id, tools.field, tools.descriptions, tools.text_color, tools.span, tools.order, icons.path, icons.icon_names FROM favourite_tools as tools INNER JOIN favourite_tools_icons as icons on tools.id= icons.id ORDER BY tools.order")
 	if err != nil {
 		return nil, err
 	}
