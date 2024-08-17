@@ -20,7 +20,7 @@ jobs:
       - name: Create .env
         run: |
           touch .env
-          echo API_URL=${{secrets.API_URL}} > .env
+          echo HOST_ADDRESS=${{secrets.HOST_ADDRESS}} > .env
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3

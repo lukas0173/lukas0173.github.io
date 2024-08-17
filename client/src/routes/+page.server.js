@@ -1,10 +1,10 @@
-import {API_URL} from "$env/static/private"
+import {HOST_ADDRESS} from "$env/static/private"
 
 export async function load({fetch, params}) {
     let returnObject = {};
-    let developmentToolsResponse = await fetch(`${API_URL}/development-tools`)
-    let personalProjectsResponse = await fetch(`${API_URL}/personal-projects`)
-    let teamProjectsResponse = await fetch(`${API_URL}/team-projects`)
+    let developmentToolsResponse = await fetch(`${HOST_ADDRESS}/development-tools`)
+    let personalProjectsResponse = await fetch(`${HOST_ADDRESS}/personal-projects`)
+    let teamProjectsResponse = await fetch(`${HOST_ADDRESS}/team-projects`)
     returnObject = {
         developmentTools: await developmentToolsResponse.json(),
         personalProjects: await personalProjectsResponse.json(),
