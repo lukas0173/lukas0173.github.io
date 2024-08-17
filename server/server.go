@@ -56,6 +56,7 @@ func main() {
 	echoServer.POST("/development-tools", handlers.InsertDevelopmentTools)
 
 	echoServer.DELETE("/personal-projects/:id", handlers.DeletePersonalProjects)
+	echoServer.DELETE("/development-tools/:id", handlers.DeleteDevelopmentTools)
 
 	echoServer.Logger.Fatal(echoServer.Start(":1323"))
 	defer func() {
