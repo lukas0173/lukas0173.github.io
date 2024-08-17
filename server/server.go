@@ -53,6 +53,7 @@ func main() {
 	echoServer.GET("/team-projects", handlers.GetTeamProjects)
 
 	echoServer.POST("/personal-projects", handlers.InsertPersonalProjects)
+	echoServer.POST("/development-tools", handlers.InsertDevelopmentTools)
 
 	echoServer.DELETE("/personal-projects/:id", handlers.DeletePersonalProjects)
 

@@ -3,15 +3,14 @@ package get
 import (
 	"context"
 	"github.com/jackc/pgx/v5"
-	"github.com/rs/zerolog/log"
 	"server/models"
 )
 
-func ProjectsQuery(database *pgx.Conn, projectType string) []models.Project {
+func ProjectsQuery(database *pgx.Conn, projectType string) ([]models.Project, error) {
 	// Query command with dynamic table
 	query, err := database.Query(context.Background(), "SELECT id, project_name, project_description, link, technologies, image_name FROM "+projectType+" ORDER BY id")
 	if err != nil {
-		log.Err(err).Msg("[Database] Error querying personal projects: %v\n")
+		return nil, err
 	}
 
 	// Iterate through the get results and assign it into returned value
@@ -28,8 +27,7 @@ func ProjectsQuery(database *pgx.Conn, projectType string) []models.Project {
 		)
 		err := query.Scan(&id, &projectName, &projectDescription, &link, &technologies, &imageName)
 		if err != nil {
-			log.Err(err).Msg("[Database] Error scanning personal projects: %v\n")
-			return nil
+			return nil, err
 		}
 
 		returnedProjects = append(returnedProjects, models.Project{
@@ -39,5 +37,5 @@ func ProjectsQuery(database *pgx.Conn, projectType string) []models.Project {
 	// Close get result on function return
 	defer query.Close()
 
-	return returnedProjects
+	return returnedProjects, nil
 }

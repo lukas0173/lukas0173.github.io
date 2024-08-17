@@ -17,4 +17,5 @@ type DevelopmentTools struct {
 	Description string `json:"description"`
 	Style       Style  `json:"style"`
 	Icons       Icons  `json:"icons"`
+	Order       int    `json:"order"`
 }
