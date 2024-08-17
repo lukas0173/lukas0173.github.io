@@ -3,15 +3,13 @@ package get
 import (
 	"context"
 	"github.com/jackc/pgx/v5"
-	"github.com/rs/zerolog/log"
 	"server/models"
 )
 
-func DevelopmentToolsQuery(database *pgx.Conn) ([]models.DevelopmentTools, error) {
+func DevelopmentToolsGet(database *pgx.Conn) ([]models.DevelopmentTools, error) {
 	// Query command
 	query, err := database.Query(context.Background(), "SELECT tools.id, tools.field, tools.descriptions, tools.text_color, tools.span, tools.order, icons.path, icons.icon_names FROM favourite_tools as tools INNER JOIN favourite_tools_icons as icons on tools.field = icons.field ORDER BY tools.id")
 	if err != nil {
-		log.Error().Err(err).Msg("[Database] Error querying development tools: %v\n")
 		return nil, err
 	}
 
@@ -25,7 +23,6 @@ func DevelopmentToolsQuery(database *pgx.Conn) ([]models.DevelopmentTools, error
 
 		err := query.Scan(&id, &field, &description, &textColor, &span, &order, &path, &iconNames)
 		if err != nil {
-			log.Error().Err(err).Msg("[Database] Scan error: %v\n")
 			return nil, err
 		}
 

@@ -3,7 +3,6 @@ package get
 import (
 	"context"
 	"github.com/jackc/pgx/v5"
-	"github.com/rs/zerolog/log"
 	"server/models"
 )
 
@@ -11,7 +10,6 @@ func ProjectsQuery(database *pgx.Conn, projectType string) ([]models.Project, er
 	// Query command with dynamic table
 	query, err := database.Query(context.Background(), "SELECT id, project_name, project_description, link, technologies, image_name FROM "+projectType+" ORDER BY id")
 	if err != nil {
-		log.Error().Err(err).Msg("[Database] Error querying personal projects: %v\n")
 		return nil, err
 	}
 
@@ -29,7 +27,6 @@ func ProjectsQuery(database *pgx.Conn, projectType string) ([]models.Project, er
 		)
 		err := query.Scan(&id, &projectName, &projectDescription, &link, &technologies, &imageName)
 		if err != nil {
-			log.Error().Err(err).Msg("[Database] Error scanning personal projects: %v\n")
 			return nil, err
 		}
 
