@@ -3,6 +3,7 @@ package insert
 import (
 	"context"
 	"github.com/jackc/pgx/v5"
+	"github.com/rs/zerolog/log"
 	"server/models"
 	"strconv"
 	"strings"
@@ -19,6 +20,7 @@ func DevelopmentToolsInsert(database *pgx.Conn, developmentTools models.Developm
 
 	_, err := database.Exec(context.Background(), queryCommand)
 	if err != nil {
+		log.Error().Err(err).Msg("[Database] Error inserting development tools")
 		return err
 	}
 

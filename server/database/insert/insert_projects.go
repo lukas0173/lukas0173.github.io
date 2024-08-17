@@ -3,6 +3,7 @@ package insert
 import (
 	"context"
 	"github.com/jackc/pgx/v5"
+	"github.com/rs/zerolog/log"
 	"server/models"
 	"strings"
 )
@@ -15,6 +16,7 @@ func ProjectsInsert(database *pgx.Conn, project models.Project, projectType stri
 
 	_, err := database.Exec(context.Background(), queryCommand)
 	if err != nil {
+		log.Error().Err(err).Msg("[Database] Error inserting project")
 		return err
 	}
 
