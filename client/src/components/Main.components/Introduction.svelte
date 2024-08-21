@@ -40,7 +40,7 @@
         <img
                 class="w-4/5 md:w-1/2 h-auto aspect-square object-cover object-center animate-animatedBlob transition-all duration-0"
                 alt="Introduction illustration"
-                src="assets/images/Main/Introduction/Potrait2.jpg"
+                src="assets/images/Main/Introduction/Portrait.jpg"
         />
     </div>
 </section>
