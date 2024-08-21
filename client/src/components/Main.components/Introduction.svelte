@@ -38,9 +38,9 @@
     </div>
     <div class="grow flex justify-center items-center">
         <img
-                class="w-5/6 md:w-4/6"
+                class="w-4/5 md:w-1/2 h-auto aspect-square object-cover object-center animate-animatedBlob transition-all duration-0"
                 alt="Introduction illustration"
-                src="assets/images/Main/Introduction/Data Maintenance.png"
+                src="assets/images/Main/Introduction/Potrait2.jpg"
         />
     </div>
 </section>
