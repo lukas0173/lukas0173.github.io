@@ -5,7 +5,7 @@ This is my portfolio site built with Svelte and TailwindCSS, which has some depe
 ## How to run
 Clone this repository:
 ```bash
-git clone https://github.com/cielaton/Portfolio-site.git
+git clone https://github.com/lukas0173/Portfolio-site.git
 ```
 Navigate to the project directory, then install the dependencies using pnpm (or any package manager you prefer):
 ```bash

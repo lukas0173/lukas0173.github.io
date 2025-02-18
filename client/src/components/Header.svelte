@@ -33,7 +33,7 @@
     </div>
     <div class="flex gap-8 items-center">
         <a
-                href="https://github.com/cielaton"
+                href="https://github.com/lukas0173"
                 target="_blank"
                 class="hidden sm:inline"
         >
