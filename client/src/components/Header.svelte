@@ -22,7 +22,7 @@
       : "bg-transparent border-transparent")}
 >
     <div class="flex gap-8">
-        <h1 class="font-bold text-4xl"><span class="text-Teal">ciel</span>aton</h1>
+        <h1 class="font-bold text-4xl"><span class="text-Teal">lu</span>kas</h1>
         <div class="lg:flex gap-8 items-center hidden">
             {#each navigations as element}
                 <a href={element.link} class="duration-150 hover:text-Teal">

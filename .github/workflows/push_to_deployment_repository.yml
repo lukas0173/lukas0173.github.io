@@ -27,11 +27,11 @@ jobs:
       - name: Git configuration
         run: |
           git config --local user.email vuwin24680@gmail.com
-          git config --local user.name cielaton
+          git config --local user.name lukas0173
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.ACCESS_TOKEN}}
-          repository: cielaton/cielaton.github.io
+          repository: lukas0173/lukas0173.github.io
           force: true
